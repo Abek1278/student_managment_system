@@ -62,15 +62,21 @@ $$\text{Client (React)} \longleftrightarrow \text{Controller (REST API)} \longle
 ### 3.1 Flowchart
 
 ```mermaid
+%%{init: {"theme":"dark","themeVariables":{"fontSize":"22px"},"flowchart":{"nodeSpacing":40,"rankSpacing":45,"padding":14}}}%%
 flowchart TD
-    Start([User opens Webpage at http://localhost:3000]) --> Load[useEffect triggers GET /students]
-    Load --> SpringController[StudentController: GET /students]
-    SpringController --> SpringService[StudentService.getAllStudents]
-    SpringService --> SpringRepo[StudentRepository.findAll]
-    SpringRepo --> DB[(MySQL: student_db)]
-    DB --> Render[Render Students in Table]
-
-    Render --> UserChoice{Select Operation}
+    subgraph ROW1[Startup Flow]
+        direction LR
+        Start([User opens Webpage at http://localhost:3000]) --> Load[useEffect triggers GET /students]
+        Load --> SpringController[StudentController: GET /students]
+        SpringController --> SpringService[StudentService.getAllStudents]
+    end
+    subgraph ROW2[Load Data]
+        direction RL
+        SpringRepo[StudentRepository.findAll] --> DB[(MySQL: student_db)]
+        DB --> Render[Render Students in Table]
+        Render --> UserChoice{Select Operation}
+    end
+    SpringService --> SpringRepo
 
     UserChoice -- "Fill Form & Click Add" --> Validate[Client-Side Email Validation: contains @ and .?]
     Validate -- "Invalid" --> Alert[Alert: Please re-enter valid email]
@@ -83,15 +89,15 @@ flowchart TD
     PutReq --> UpdateDB[Repository.save -> MySQL]
     UpdateDB --> Refresh
 
+    UserChoice -- "Click Calculate Average" --> GetAverage[GET /students/average]
+    GetAverage --> ServiceCalc[StudentService: Sum marks and divide by count]
+    ServiceCalc --> ShowAverage[Display Average Marks of Students on UI]
+
     UserChoice -- "Click Delete" --> ConfirmDel{Confirm Deletion?}
     ConfirmDel -- "Yes" --> DeleteReq[DELETE /students/:id]
     DeleteReq --> DeleteDB[Repository.deleteById -> MySQL]
     DeleteDB --> Refresh
     ConfirmDel -- "No" --> Render
-
-    UserChoice -- "Click Calculate Average" --> GetAverage[GET /students/average]
-    GetAverage --> ServiceCalc[StudentService: Sum marks and divide by count]
-    ServiceCalc --> ShowAverage[Display Average Marks of Students on UI]
 
     Refresh --> Render
 ```
