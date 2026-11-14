@@ -5,7 +5,7 @@ function App() {
   // State for student list
   const [students, setStudents] = useState([]);
 
-  // Form input states (Direct mapping to Exp 1 rollNo & name, Exp 8 email, Exp 10 marks)
+  // Form input states
   const [rollNo, setRollNo] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -17,7 +17,7 @@ function App() {
   // State to display calculated average marks
   const [averageMarks, setAverageMarks] = useState(null);
 
-  // Backend API URL (Matches Exp 10 @RequestMapping("/students"))
+  // Backend API URL
   const API_URL = 'http://localhost:8080/students';
 
   // Fetch all students on page load
@@ -32,7 +32,7 @@ function App() {
       .catch((error) => console.error('Error fetching students:', error));
   };
 
-  // Experiment 8: Email validation logic (checking presence of '@' and '.')
+  // Email validation logic (checking presence of '@' and '.')
   const validateEmail = (emailInput) => {
     if (emailInput.indexOf('@') === -1 || emailInput.indexOf('.') === -1) {
       alert("Invalid Email! Email must contain '@' and '.' characters. Please re-enter.");
@@ -51,7 +51,7 @@ function App() {
       return;
     }
 
-    // Experiment 8 Email Validation Check
+    // Email Validation Check
     if (!validateEmail(email)) {
       return;
     }
@@ -64,7 +64,7 @@ function App() {
     };
 
     if (editId === null) {
-      // POST /students (Exp 10 addExpense pattern)
+      // POST /students
       fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -161,7 +161,7 @@ function App() {
           </div>
 
           <div className="form-group">
-            <label>Email Address (Exp 8 Validation):</label>
+            <label>Email Address:</label>
             <input
               type="text"
               placeholder="e.g. rahul@gmail.com"
@@ -239,7 +239,7 @@ function App() {
           </table>
         )}
 
-        {/* Calculation Section from Exp 10 */}
+        {/* Aggregate Calculation Section */}
         <div style={{ marginTop: '20px' }}>
           <button className="btn btn-calc" onClick={handleCalculateAverage}>
             Calculate Average Marks

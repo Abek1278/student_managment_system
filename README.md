@@ -1,8 +1,8 @@
-# Student Management System (Mini Project)
+# Student Management System
 
-A beginner-friendly, Level-1 Full-Stack **Student Management System** developed directly aligned with Experiments 1 to 10 taught in the syllabus.
+A full-stack **Student Management System** built with **React**, **Java Spring Boot**, **Spring Data JPA**, and **MySQL**.
 
-Built using: **React**, **CSS**, **Java Spring Boot**, **Spring Data JPA / JDBC Connectivity**, and **MySQL**.
+The application provides a responsive web interface for managing student records, performing client-side validation, executing full CRUD operations, and computing real-time academic analytics.
 
 ---
 
@@ -16,7 +16,7 @@ Built using: **React**, **CSS**, **Java Spring Boot**, **Spring Data JPA / JDBC 
 | **4** | [Features, Frontend & Database Design](#4-features-frontend--database-design) |
 | **5** | [Backend Design & Workflow](#5-backend-design--workflow) |
 | **6** | [Sample Code Snippets](#6-sample-code-snippets) |
-| **7** | [Output Screenshots](#7-output-screenshots) |
+| **7** | [Application Preview & API Verification](#7-application-preview--api-verification) |
 | **8** | [Conclusion & Future Scope](#8-conclusion--future-scope) |
 | **9** | [How to Run the Project](#9-how-to-run-the-project) |
 
@@ -28,32 +28,32 @@ Built using: **React**, **CSS**, **Java Spring Boot**, **Spring Data JPA / JDBC 
 **Student Management System**
 
 ### Description
-The Student Management System is an end-to-end, Level-1 monolithic web application designed to demonstrate the core competencies covered across laboratory Experiments 1 through 10. The system enables users to create, view, update, and delete student records (`rollNo`, `name`, `email`, `marks`), calculate total marks across all students, and validate input data directly on the client side.
+The Student Management System is an end-to-end full-stack web application designed for streamlined academic record management. The platform allows administrators and instructors to register, view, update, and remove student profiles (`rollNo`, `name`, `email`, `marks`), validate form data in real time, and compute aggregate metrics such as class averages.
 
-The architecture mirrors the exact 4-tier monolithic structure taught in class:
-$$\text{Client (React)} \longleftrightarrow \text{Controller} \longleftrightarrow \text{Service} \longleftrightarrow \text{Repository} \longleftrightarrow \text{JPA / Database (MySQL)}$$
+The system is built upon a standard 4-tier layered architecture:
+$$\text{Client (React)} \longleftrightarrow \text{Controller (REST API)} \longleftrightarrow \text{Service (Business Logic)} \longleftrightarrow \text{Repository (Data Access)} \longleftrightarrow \text{Database (MySQL)}$$
 
 ### Objectives
-1. **Apply Object-Oriented Fundamentals (Exp 1 & Exp 2)**: Model student entities with encapsulated fields, default constructors, parameterized constructors, and getters/setters.
-2. **Implement Client-Side Web Interface (Exp 5, 7, 8 & Exp 9)**: Construct a clean, accessible user interface using HTML table/form semantics, CSS styling, client-side email format validation (checking `@` and `.`), and dynamic React hooks (`useState`, `useEffect`).
-3. **Enterprise Monolithic Backend Architecture (Exp 6 & Exp 10)**: Build a RESTful Spring Boot application following the standard layered package structure (`entity`, `repository`, `service`, `controller`).
-4. **Relational Database Persistence (Exp 10)**: Connect to a MySQL relational database via Spring Boot's datasource configuration (`spring.datasource.url`), mapping entities directly to relational tables.
+1. **Object-Oriented Domain Modeling**: Model structured student entities with proper encapsulation, accessors, and constructors.
+2. **Interactive Client Interface**: Provide a clean, accessible UI using semantic HTML5, CSS3 card layouts, client-side email format validation, and React hooks (`useState`, `useEffect`).
+3. **Layered RESTful Backend**: Structure server-side logic into decoupled layers (`entity`, `repository`, `service`, `controller`) for maintainability and scalability.
+4. **Relational Database Persistence**: Implement automated ORM schema generation and CRUD transactions via Spring Data JPA and Hibernate connected to MySQL.
 
 ---
 
 ## 2. Tools & Technologies
 
-| Category | Technology / Tool | Version / Details | Purpose | Direct Syllabus Link |
-| :--- | :--- | :--- | :--- | :--- |
-| **Frontend UI** | React.js | 18.x | Component-based interactive UI, `useState` hook for state, `useEffect` for lifecycle API calls | **Experiment 9** |
-| **Validation** | JavaScript | ES6 | Form handling and email validation checking presence of `@` and `.` | **Experiment 8** |
-| **Styling** | Plain CSS | CSS3 | Responsive card layouts, form controls, table grid design | **Experiment 5 & 7** |
-| **Backend Language** | Java | JDK 17 / 21 | Core programming language, OOP classes and objects | **Experiment 1 & 2** |
-| **Backend Framework** | Spring Boot | 3.2.x | Monolithic framework, embedded Apache Tomcat, RESTful APIs | **Experiment 6 & 10** |
-| **Persistence / ORM** | Spring Data JPA / Hibernate | JPA 3.x | Auto-creates tables (`ddl-auto=update`), handles database operations without writing complex SQL | **Experiment 10** |
-| **Database** | MySQL | MySQL 8.0+ | Relational storage for student records (`student_db`) | **Experiment 10** |
-| **Build Tool** | Apache Maven | 3.x | Build automation, dependency management via `pom.xml` | **Experiment 10** |
-| **Development IDE** | VS Code / Eclipse | Standard | IDE with Spring Boot and Thunder Client support | **Experiment 5 & 10** |
+| Category | Technology / Tool | Version / Details | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Frontend UI** | React.js | 18.x | Component-driven UI, state management via `useState`, and API lifecycle hooks via `useEffect` |
+| **Validation** | JavaScript | ES6+ | Real-time input handling and email syntax validation |
+| **Styling** | Modern CSS | CSS3 | Responsive cards, accessible forms, data tables, and interactive states |
+| **Backend Language** | Java | JDK 17 / 21 | Core programming language for business logic and enterprise services |
+| **Backend Framework** | Spring Boot | 3.2.x | RESTful API controllers, embedded Tomcat server, and dependency injection |
+| **Persistence / ORM** | Spring Data JPA / Hibernate | JPA 3.x | ORM mapping, automated table updates (`ddl-auto=update`), and repository abstractions |
+| **Database** | MySQL | MySQL 8.0+ | Relational persistence for student records (`student_db`) |
+| **Build Tool** | Apache Maven | 3.x | Project lifecycle and backend dependency management |
+| **Development IDE** | VS Code / IntelliJ / Eclipse | Standard | Application development and REST API testing |
 
 ---
 
@@ -72,7 +72,7 @@ flowchart TD
 
     Render --> UserChoice{Select Operation}
 
-    UserChoice -- "Fill Form & Click Add" --> Validate[Exp 8 Email Validation: contains @ and .?]
+    UserChoice -- "Fill Form & Click Add" --> Validate[Client-Side Email Validation: contains @ and .?]
     Validate -- "Invalid" --> Alert[Alert: Please re-enter valid email]
     Validate -- "Valid" --> PostReq[POST /students]
     PostReq --> SaveDB[Repository.save -> MySQL]
@@ -138,6 +138,7 @@ classDiagram
         +updateStudent(Long id, Student studentDetails) Student
         +deleteStudent(Long id) void
         +calculateAverageMarks() double
+        +calculateTotalMarks() double
     }
 
     class StudentController {
@@ -148,6 +149,7 @@ classDiagram
         +updateStudent(Long id, Student student) Student
         +deleteStudent(Long id) String
         +getAverageMarks() double
+        +getTotalMarks() double
     }
 
     StudentController --> StudentService : calls
@@ -160,58 +162,59 @@ classDiagram
 ## 4. Features, Frontend & Database Design
 
 ### 4.1 Key Features
-- **Student Registration (Create)**: Capture roll number, name, email, and marks.
-- **Client-Side Validation (Exp 8)**: Custom JavaScript validation verifying the presence of `@` and `.` characters in the email input before submitting.
-- **Student Directory (Read)**: Tabular presentation displaying all active records.
-- **Record Modification (Update)**: In-place form population allowing instant edits and updates.
-- **Record Removal (Delete)**: Safe deletion prompt using browser dialog confirmation.
-- **Aggregate Calculation (Exp 10)**: Server-side business logic calculating average marks across all enrolled students (`calculateAverageMarks()`).
+- **Student Registration (Create)**: Capture roll number, student name, email, and academic marks.
+- **Client-Side Validation**: Validate email format (`@` and `.`) before sending network requests.
+- **Student Directory (Read)**: Tabular layout dynamically displaying all active student records.
+- **Record Modification (Update)**: In-place form population for immediate updates without reloading.
+- **Record Removal (Delete)**: Confirmation prompt to ensure safe record deletion.
+- **Academic Analytics**: Server-side business calculation to compute average student marks (`calculateAverageMarks()`).
 
 ### 4.2 Frontend Design (React + CSS)
-The user interface is contained inside [`frontend/src/App.js`](file:///home/abek_shek/Desktop/student_managment/frontend/src/App.js) and styled via [`frontend/src/App.css`](file:///home/abek_shek/Desktop/student_managment/frontend/src/App.css):
-- **Form Card**: Header "Add New Student" or "Update Student Record" with standard input fields and action buttons.
-- **Table Card**: Styled table with columns `ID`, `Roll No`, `Name`, `Email`, `Marks`, and `Actions`.
-- **Summary Box**: Dedicated button and card displaying the average marks of students.
+The user interface is contained inside [`frontend/src/App.js`](frontend/src/App.js) and styled via [`frontend/src/App.css`](frontend/src/App.css):
+- **Form Card**: Clean inputs for student attributes with contextual Add/Update actions.
+- **Table Card**: Styled table displaying `ID`, `Roll No`, `Name`, `Email`, `Marks`, and `Actions`.
+- **Summary Box**: Dedicated calculation trigger and result badge presenting the computed average marks.
 
 ### 4.3 Database Design (MySQL)
 
 #### Database: `student_db`
 #### Table: `student` (Auto-generated by Hibernate from `@Entity Student`)
 
-| Column Name | SQL Type | Constraints | Description | Syllabus Field Origin |
-| :--- | :--- | :--- | :--- | :--- |
-| `id` | `BIGINT` | `PRIMARY KEY, AUTO_INCREMENT` | Unique system identifier | Exp 10 (`Long id`) |
-| `roll_no` | `INT` | `NOT NULL` | Student academic roll number | Exp 1 (`int rollNo`) |
-| `name` | `VARCHAR(255)` | `NOT NULL` | Full student name | Exp 1 (`String name`) |
-| `email` | `VARCHAR(255)` | `NOT NULL` | Email address validated for `@` and `.` | Exp 8 (Email Validation) |
-| `marks` | `DOUBLE` | `NOT NULL` | Numerical marks used for aggregation | Exp 10 (`double amount` pattern) |
+| Column Name | SQL Type | Constraints | Description |
+| :--- | :--- | :--- | :--- |
+| `id` | `BIGINT` | `PRIMARY KEY, AUTO_INCREMENT` | Unique identifier |
+| `roll_no` | `INT` | `NOT NULL` | Student academic roll number |
+| `name` | `VARCHAR(255)` | `NOT NULL` | Full student name |
+| `email` | `VARCHAR(255)` | `NOT NULL` | Validated contact email |
+| `marks` | `DOUBLE` | `NOT NULL` | Numerical score used for class metrics |
 
 ---
 
 ## 5. Backend Design & Workflow
 
-The backend strictly follows the **5-component monolithic pattern** taught in Experiment 10:
+The backend architecture follows a clean 4-tier structure:
 
-1. **`Student.java` (Entity Package)**:
-   Annotated with `@Entity`, `@Id`, and `@GeneratedValue(strategy = GenerationType.IDENTITY)`. Represents the schema.
-2. **`StudentRepository.java` (Repository Package)**:
-   An interface extending `JpaRepository<Student, Long>`, providing pre-built database CRUD methods (`save`, `findAll`, `findById`, `deleteById`).
-3. **`StudentService.java` (Service Package)**:
-   Annotated with `@Service`. Encapsulates business logic, including iterating over records to compute the class average.
-4. **`StudentController.java` (Controller Package)**:
-   Annotated with `@RestController`, `@RequestMapping("/students")`, and `@CrossOrigin(origins = "*")`. Exposes REST API endpoints.
-5. **`application.properties` (Resources)**:
-   Configures the MySQL database URL (`username=root`, `password=root`), `ddl-auto=update`, and `server.port=8080`.
+1. **`Student.java` (Entity Layer)**:
+   Annotated with `@Entity`, `@Id`, and `@GeneratedValue(strategy = GenerationType.IDENTITY)`. Represents the database model.
+2. **`StudentRepository.java` (Data Access Layer)**:
+   Interface extending `JpaRepository<Student, Long>`, providing built-in methods (`save`, `findAll`, `findById`, `deleteById`).
+3. **`StudentService.java` (Business Logic Layer)**:
+   Annotated with `@Service`. Handles transactional operations and computations such as calculating class averages.
+4. **`StudentController.java` (Controller / API Layer)**:
+   Annotated with `@RestController`, `@RequestMapping("/students")`, and `@CrossOrigin(origins = "*")`. Exposes RESTful endpoints.
+5. **`application.properties` (Configuration)**:
+   Configures the datasource connection (`spring.datasource.url`), JPA parameters (`ddl-auto=update`), and server port.
 
 ### REST API Endpoints
 
 | HTTP Method | Route | Description | Request Body | Response Format |
 | :--- | :--- | :--- | :--- | :--- |
-| **GET** | `/students` | Get list of all students | None | `JSON Array of Students` |
+| **GET** | `/students` | Retrieve all student records | None | `JSON Array of Students` |
 | **POST** | `/students` | Register a new student | `Student JSON` | `Created Student JSON` |
-| **PUT** | `/students/{id}` | Update an existing student | `Student JSON` | `Updated Student JSON` |
-| **DELETE** | `/students/{id}` | Delete a student by ID | None | `String ("Student deleted successfully")` |
-| **GET** | `/students/average` | Calculate average marks | None | `double (e.g. 93.75)` |
+| **PUT** | `/students/{id}` | Update existing student record | `Student JSON` | `Updated Student JSON` |
+| **DELETE** | `/students/{id}` | Delete student by ID | None | `String ("Student deleted successfully")` |
+| **GET** | `/students/average` | Calculate average marks | None | `double (e.g. 90.25)` |
+| **GET** | `/students/total` | Calculate sum of marks | None | `double (e.g. 180.5)` |
 
 ---
 
@@ -247,7 +250,6 @@ public class Student {
         this.marks = marks;
     }
 
-    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public int getRollNo() { return rollNo; }
@@ -261,7 +263,7 @@ public class Student {
 }
 ```
 
-### 6.2 Service Layer with Calculation Logic (`StudentService.java`)
+### 6.2 Service Layer (`StudentService.java`)
 ```java
 package com.example.student.service;
 
@@ -302,9 +304,9 @@ public class StudentService {
 }
 ```
 
-### 6.3 React Component with Validation & Hooks (`App.js`)
+### 6.3 React Component Logic (`App.js`)
 ```javascript
-// Experiment 8: Email validation logic
+// Email validation logic
 const validateEmail = (emailInput) => {
   if (emailInput.indexOf('@') === -1 || emailInput.indexOf('.') === -1) {
     alert("Invalid Email! Email must contain '@' and '.' characters. Please re-enter.");
@@ -313,7 +315,7 @@ const validateEmail = (emailInput) => {
   return true;
 };
 
-// Experiment 9: useState Hook for managing form data
+// Form state hooks
 const [rollNo, setRollNo] = useState('');
 const [name, setName] = useState('');
 const [email, setEmail] = useState('');
@@ -323,9 +325,7 @@ const [averageMarks, setAverageMarks] = useState(null);
 
 ---
 
-## 7. Output Screenshots
-
-*(Use this section for your Lab Submission Document / Project Report)*
+## 7. Application Preview & API Verification
 
 ### 1. Web Application User Interface
 ```
@@ -335,7 +335,7 @@ const [averageMarks, setAverageMarks] = useState(null);
 |  Add New Student                                                                        |
 |  Roll Number:                          [ 101                      ]                     |
 |  Student Name:                         [ Rahul Sharma             ]                     |
-|  Email Address (Exp 8 Validation):     [ rahul@gmail.com          ]                     |
+|  Email Address:                        [ rahul@gmail.com          ]                     |
 |  Marks:                                [ 88.5                     ]                     |
 |  [ Add Student ]                                                                        |
 +-----------------------------------------------------------------------------------------+
@@ -352,7 +352,7 @@ const [averageMarks, setAverageMarks] = useState(null);
 +-----------------------------------------------------------------------------------------+
 ```
 
-### 2. Validation Alert (Experiment 8)
+### 2. Client-Side Validation Alert
 When entering an email lacking `@` or `.` (e.g. `rahulgmailcom`):
 ```
 +-----------------------------------------------------------------------+
@@ -361,7 +361,7 @@ When entering an email lacking `@` or `.` (e.g. `rahulgmailcom`):
 +-----------------------------------------------------------------------+
 ```
 
-### 3. Thunder Client / REST API Verification
+### 3. REST API Verification
 - `POST http://localhost:8080/students` $\longrightarrow$ `200 OK` (Record inserted into MySQL)
 - `GET http://localhost:8080/students/average` $\longrightarrow$ `90.25` (Computed average of all students' marks)
 
@@ -369,17 +369,15 @@ When entering an email lacking `@` or `.` (e.g. `rahulgmailcom`):
 
 ## 8. Conclusion & Future Scope
 
-### Conclusion
-The **Student Management System** provides a complete practical realization of the software development syllabus:
-- **Object-Oriented Programming (Exp 1 & 2)** is applied via proper class design, encapsulation, and constructors.
-- **Client-Side Technologies (Exp 5, 7, 8 & 9)** are integrated through responsive styling, event-driven user actions, email validation, and React hooks.
-- **Enterprise Spring Boot Architecture (Exp 6 & 10)** is implemented using a 4-tier monolithic architecture (`Controller` $\to$ `Service` $\to$ `Repository` $\to$ `MySQL`), including relational mapping and automated schema updates.
-
-The codebase is free of over-engineering, making each line directly traceable to classroom experiments and ready for viva defense.
+### Architecture Summary
+The **Student Management System** demonstrates solid full-stack engineering fundamentals:
+- **Object-Oriented Design**: Clean entity structure, encapsulation, and type safety.
+- **Responsive Frontend**: Event-driven architecture with form validation and state synchronization in React.
+- **Enterprise Spring Architecture**: Multi-tier architecture (`Controller` $\to$ `Service` $\to$ `Repository` $\to$ `MySQL`) with automated schema management and transaction boundaries.
 
 ### Future Scope
 1. **Search & Filter Operations**: Add client-side filtering by roll number or student name.
-2. **Grade Calculation**: Extend the service layer to assign grades (A, B, C) based on marks.
+2. **Grade Calculation**: Extend the service layer to assign letter grades (A, B, C) based on marks.
 3. **Pagination Support**: Support paginated queries for managing large batches of students.
 4. **Export Options**: Export the student roster into downloadable CSV or PDF reports.
 
@@ -399,9 +397,8 @@ Make sure the following tools are installed:
 ### Step 1: Set up MySQL Database
 1. Open the terminal or Command Prompt and log in to MySQL:
    ```bash
-   sudo mysql
+   mysql -u root -p
    ```
-   *(or `mysql -u root -p` on Windows)*
 
 2. Create the project database:
    ```sql
@@ -411,7 +408,7 @@ Make sure the following tools are installed:
    ```
    *(Note: Hibernate automatically creates and updates the `student` table with all columns when Spring Boot starts up).*
 
-3. *(Optional)* Verify database credentials inside [`backend/src/main/resources/application.properties`](file:///home/abek_shek/Desktop/student_managment/backend/src/main/resources/application.properties):
+3. *(Optional)* Verify database credentials inside [`backend/src/main/resources/application.properties`](backend/src/main/resources/application.properties):
    ```properties
    spring.datasource.url=jdbc:mysql://localhost:3306/student_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
    spring.datasource.username=root
@@ -424,7 +421,7 @@ Make sure the following tools are installed:
 ### Step 2: Run the Spring Boot Backend
 1. Open a terminal and navigate to the `backend` directory:
    ```bash
-   cd /home/abek_shek/Desktop/student_managment/backend
+   cd backend
    ```
 
 2. Start the application using Maven:
@@ -443,7 +440,7 @@ Make sure the following tools are installed:
 ### Step 3: Run the React Frontend
 1. Open a second terminal and navigate to the `frontend` directory:
    ```bash
-   cd /home/abek_shek/Desktop/student_managment/frontend
+   cd frontend
    ```
 
 2. Install dependencies (only required the first time):
@@ -451,22 +448,19 @@ Make sure the following tools are installed:
    npm install
    ```
 
-3. Start the React development server (either command works):
+3. Start the React development server:
    ```bash
    npm start
-   # or
-   npm run dev
    ```
 
-4. The browser will automatically open:
+4. Open in your browser:
    **`http://localhost:3000`**
 
 ---
 
 ### Step 4: Test the Application
-1. **Add Student**: Enter Roll No, Name, Email (must have `@` and `.`), and Marks, then click **Add Student**.
+1. **Add Student**: Enter Roll No, Name, Email, and Marks, then click **Add Student**.
 2. **View Students**: The new student appears immediately in the table below.
 3. **Edit Student**: Click **Edit** next to any record, modify the values in the form, and click **Update Student**.
 4. **Delete Student**: Click **Delete** next to any student and confirm the alert popup.
 5. **Calculate Average Marks**: Click **Calculate Average Marks** to invoke the backend business logic and view the average marks of all students.
-

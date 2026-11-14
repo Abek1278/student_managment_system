@@ -1,4 +1,4 @@
-/* Simple, beginner-friendly CSS based on Experiment 5, 7, and 10 */
+/* Clean modern layout and styling */
 
 body {
   font-family: Arial, sans-serif;
@@ -126,7 +126,7 @@ h1 {
   background-color: #c0392b;
 }
 
-/* Table Design (from Experiment 5) */
+/* Table Design */
 table {
   width: 100%;
   border-collapse: collapse;
