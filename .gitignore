@@ -10,6 +10,7 @@ frontend/yarn-error.log*
 backend/target/
 backend/.mvn/
 backend/*.log
+backend/data/
 
 # IDE files
 .vscode/
