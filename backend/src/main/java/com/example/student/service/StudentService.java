@@ -11,17 +11,17 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
 
-    // Constructor injection (Same pattern as Exp 10 Step 12)
+    // Constructor injection
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 
-    // 1. Add Student (Exp 10 save method)
+    // 1. Add Student
     public Student addStudent(Student student) {
         return studentRepository.save(student);
     }
 
-    // 2. Get All Students (Exp 10 findAll method)
+    // 2. Get All Students
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
@@ -44,7 +44,7 @@ public class StudentService {
         studentRepository.deleteById(id);
     }
 
-    // 5. Calculate Average Marks (Business logic pattern from Exp 10)
+    // 5. Calculate Average Marks
     public double calculateAverageMarks() {
         List<Student> students = studentRepository.findAll();
         if (students.isEmpty()) {

@@ -12,21 +12,16 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Direct mapping to Exp 1: rollNo and name
     private int rollNo;
     private String name;
-
-    // Direct mapping to Exp 8: email for validation
     private String email;
-
-    // Direct mapping to Exp 10: numeric marks for calculation
     private double marks;
 
-    // Default Constructor (Exp 1 & Exp 2: no-arg constructor)
+    // Default Constructor
     public Student() {
     }
 
-    // Parameterized Constructor (Exp 2: constructor overloading)
+    // Parameterized Constructor
     public Student(int rollNo, String name, String email, double marks) {
         this.rollNo = rollNo;
         this.name = name;
@@ -34,7 +29,7 @@ public class Student {
         this.marks = marks;
     }
 
-    // Getters and Setters (Exp 10 Entity standard)
+    // Getters and Setters
     public Long getId() {
         return id;
     }

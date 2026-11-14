@@ -13,12 +13,12 @@ public class StudentController {
 
     private final StudentService studentService;
 
-    // Constructor injection (Same as Exp 10 Step 13)
+    // Constructor injection
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
 
-    // 1. POST /students : Add student (Exp 10 Step 13)
+    // 1. POST /students : Add student
     @PostMapping
     public Student addStudent(@RequestBody Student student) {
         return studentService.addStudent(student);
@@ -49,7 +49,7 @@ public class StudentController {
         return studentService.calculateAverageMarks();
     }
 
-    // GET /students/total : Calculate total marks (Exp 10 Step 13 pattern)
+    // GET /students/total : Calculate total marks
     @GetMapping("/total")
     public double getTotalMarks() {
         return studentService.calculateTotalMarks();
